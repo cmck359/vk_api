@@ -372,13 +372,14 @@ class VkUpload(object):
 
         response = self.vk.video.save(**values)
         url = response.pop('upload_url')
+        return url
 
-        with FilesOpener(video_file or [], 'video_file') as f:
-            response.update(self.http.post(
-                url,
-                files=f or None
-            ).json())
-            return response
+        #with FilesOpener(video_file or [], 'video_file') as f:
+        #    response.update(self.http.post(
+        #        url,
+        #        files=f or None
+        #    ).json())
+        #    return response
 
 
     def document(self, doc, title=None, tags=None, group_id=None,
